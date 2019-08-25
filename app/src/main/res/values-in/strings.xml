@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie KataLoeGue41</string>
+    <string name="navigation_drawer_open">Buka navigation drawer</string>
+    <string name="navigation_drawer_close">Tutup navigation drawer</string>
+    <string name="nav_header_title">Tuan Reviewer</string>
+    <string name="nav_header_subtitle">reviewer@dicoding.com</string>
+    <string name="nav_header_desc">Kepala Navigasi</string>
+    <string name="action_settings">Pengaturan</string>
+
+    <string name="menu_home">Beranda</string>
+    <string name="menu_gallery">Galeri</string>
+    <string name="menu_slideshow">Tayangan Slide</string>
+    <string name="menu_tools">Alat</string>
+    <string name="menu_share">Bagikan</string>
+    <string name="menu_send">Kirim</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dashboard">Dasbor</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="title_movies">Film</string>
+    <string name="title_tv_show">Tayangan TV</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Halo kosong fragment</string>
+    <string name="info">Informasi</string>
+    <string name="menu_language">Bahasa</string>
+    <string name="menu_about">Tentang</string>
+    <string name="search">Cari</string>
+    <string name="search_hint">Cari Sesuatu</string>
+    <string name="share">Bagikan</string>
+    <string name="copy">Salin</string>
+    <string name="background_poster">Latar Belakang Poster</string>
+    <string name="movie_poster">Poster Film</string>
+    <string name="textview">TextView</string>
+    <string name="more">Lebih</string>
+    <string name="detail">Detail</string>
+    <string name="about">Tentang</string>
+    <string name="logo">Logo</string>
+    <string name="Movie">Film</string>
+    <string name="overview">Ikhtisar</string>
+    <string name="get_back_drop">Dapatkan Back-Drop</string>
+    <string name="date">29/12/2000</string>
+</resources>
