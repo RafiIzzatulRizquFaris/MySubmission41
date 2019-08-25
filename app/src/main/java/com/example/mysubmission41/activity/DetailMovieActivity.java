@@ -1,6 +1,5 @@
 package com.example.mysubmission41.activity;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -40,12 +39,11 @@ public class DetailMovieActivity extends AppCompatActivity{
     private Boolean isFavorite = false;
 
 
-
-    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie_acitivity);
+
         movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
 
         collapsingMovie = findViewById(R.id.collapsing_movie);
@@ -121,4 +119,5 @@ public class DetailMovieActivity extends AppCompatActivity{
         );
         Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
     }
+
 }
