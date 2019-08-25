@@ -89,9 +89,7 @@ public class MovieFavFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
+    public void onResume() { super.onResume(); }
 
 
 }
