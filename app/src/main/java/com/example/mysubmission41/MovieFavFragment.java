@@ -88,4 +88,10 @@ public class MovieFavFragment extends Fragment {
         super.onDestroyView();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+
 }
