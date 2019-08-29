@@ -43,7 +43,7 @@ public class FavTvAdapter extends RecyclerView.Adapter<FavTvAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         TvShow tvShow = getItem(position);
-        Log.d(TAG, "FavTvAdapter: " + tvShow.getId());
+        Log.d(TAG, "FavTvAdapter: " + tvShow.getOriginalName());
         String imgUrl = ApiConfig.IMAGE_URL + tvShow.getPosterPath();
         Glide.with(tvShowFavFragment).load(imgUrl).override(150, 175).into(holder.tvimgfav);
         holder.tvtitlefav.setText(tvShow.getName());
