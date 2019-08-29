@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.MovieHelper;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.pojo.Movie;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -37,7 +38,7 @@ public class DetailMovieActivity extends AppCompatActivity{
     FloatingActionButton btnBackDrop;
     Button btnFavoriteMovie;
     private Boolean isFavorite = false;
-
+    private MovieHelper mMovieHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +96,9 @@ public class DetailMovieActivity extends AppCompatActivity{
     private void FavoriteSave() {
 
         String TAG = "detailMovie";
+
+        mMovieHelper = new MovieHelper(this);
+        mMovieHelper.open();
 
         Log.d(TAG, " Detail Movie: " + movie.getId());
 

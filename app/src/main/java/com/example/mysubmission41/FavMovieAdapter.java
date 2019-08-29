@@ -1,6 +1,7 @@
 package com.example.mysubmission41;
 
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class FavMovieAdapter extends RecyclerView.Adapter<FavMovieAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Movie movie = getItem(position);
+        Log.d(TAG, "Movie Id : " + movie.getId());
         String imgUrl = ApiConfig.IMAGE_URL + movie.getPosterPath();
         Glide.with(movieFavFragment).load(imgUrl).override(150, 175).into(holder.imgfav);
         holder.titlefav.setText(movie.getTitle());

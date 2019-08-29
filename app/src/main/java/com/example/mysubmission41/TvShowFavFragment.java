@@ -84,16 +84,9 @@ public class TvShowFavFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
 }
