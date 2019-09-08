@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import static android.provider.BaseColumns._ID;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_ID;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TABEL_TV;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TABEL_TV;
 
 public class TvHelper {
     private static String DATABASE_TABLE = TABEL_TV;

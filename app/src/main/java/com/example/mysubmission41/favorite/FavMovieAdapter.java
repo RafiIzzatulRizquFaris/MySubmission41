@@ -1,5 +1,6 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,22 +13,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.pojo.Movie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FavMovieAdapter extends RecyclerView.Adapter<FavMovieAdapter.ViewHolder> {
-
-    Cursor cursor;
-
-    private MovieFavFragment movieFavFragment;
+    Context context;
+    List<Movie> list;
     private final String TAG = "FavMovieAdapter";
 
 
-    public void setLismovies( Cursor lismovies) {
-        this.cursor = lismovies;
+    public void setLismovies(List<Movie> list) {
+        this.list.addAll(list);
+        notifyDataSetChanged();
     }
 
-    public FavMovieAdapter(MovieFavFragment movieFavFragment, Cursor list) {
-        this.movieFavFragment = movieFavFragment;
+    public FavMovieAdapter(Context context) {
+        this.context = context;
+        list = new ArrayList<>();
     }
 
     @NonNull
@@ -40,36 +46,19 @@ public class FavMovieAdapter extends RecyclerView.Adapter<FavMovieAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Movie movie = getItem(position);
-        Log.d(TAG, "Movie Id : " + movie.getId());
+        Movie movie = list.get(position);
+        Log.e(TAG, "Movie Id : " + list.size());
+
         String imgUrl = ApiConfig.IMAGE_URL + movie.getPosterPath();
-        Glide.with(movieFavFragment).load(imgUrl).override(150, 175).into(holder.imgfav);
+        Glide.with(context).load(imgUrl).override(150, 175).into(holder.imgfav);
         holder.titlefav.setText(movie.getTitle());
         holder.datefav.setText(movie.getReleaseDate());
 
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
     public int getItemCount() {
-        if (cursor == null) return 0;
-        return cursor.getCount();
-    }
-
-    private Movie getItem(int position) {
-        if (!cursor.moveToPosition(position)) {
-            throw new IllegalStateException("Position invalid");
-        }
-        return new Movie(cursor);
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,24 +1,24 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import static android.provider.BaseColumns._ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.JUDUL;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.MOVIE_ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.POSTER;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.RELEASE;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.VOTE;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.TABEL_MOVIE;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TABEL_TV;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_ID;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_JUDUL;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_POSTER;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_RELEASE;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_VOTE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.JUDUL;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.MOVIE_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.OVERVIEW;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.POSTER;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.RELEASE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.VOTE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.TABEL_MOVIE;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TABEL_TV;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_JUDUL;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_OVERVIEW;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_POSTER;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_RELEASE;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_VOTE;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

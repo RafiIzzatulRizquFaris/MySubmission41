@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavoriteActivity">
+        <activity android:name=".favorite.FavoriteActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
@@ -55,7 +55,7 @@
         </activity>
 
         <provider
-            android:name=".FavoriteProvider"
+            android:name=".favorite.FavoriteProvider"
             android:authorities="com.example.mysubmission41"
             android:exported="true"
             android:readPermission="com.example.mysubmission41.READ_DATABASE"

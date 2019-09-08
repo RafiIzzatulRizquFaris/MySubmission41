@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.mysubmission41.MovieFavFragment;
+import com.example.mysubmission41.favorite.MovieFavFragment;
 import com.example.mysubmission41.R;
-import com.example.mysubmission41.TvShowFavFragment;
+import com.example.mysubmission41.favorite.TvShowFavFragment;
 
 public class TabFavoriteAdapter extends FragmentPagerAdapter {
 

@@ -1,34 +1,36 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.example.mysubmission41.R;
 
-import static com.example.mysubmission41.DatabaseContract.CONTENT_URI;
+import static com.example.mysubmission41.favorite.DatabaseContract.CONTENT_URI_TV;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieFavFragment extends Fragment {
+public class TvShowFavFragment extends Fragment {
 
-    private FavMovieAdapter favMovieAdapter;
+    private FavTvAdapter favTvAdapter;
     private Cursor list;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
 
-    public MovieFavFragment() {
+
+    public TvShowFavFragment() {
         // Required empty public constructor
     }
 
@@ -37,9 +39,9 @@ public class MovieFavFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_movie_fav, container, false);
-        swipeRefreshLayout = view.findViewById(R.id.sr_favorite_movie);
-        recyclerView = view.findViewById(R.id.rv_favorite_movie);
+        View view = inflater.inflate(R.layout.fragment_tv_show_fav, container, false);
+        swipeRefreshLayout = view.findViewById(R.id.sr_favorite_tvshow);
+        recyclerView = view.findViewById(R.id.rv_favorite_tvshow);
 
         new loadData().execute();
         showListData();
@@ -49,14 +51,15 @@ public class MovieFavFragment extends Fragment {
             showListData();
             swipeRefreshLayout.setRefreshing(false);
         });
+
         return view;
     }
 
     private void showListData() {
-        favMovieAdapter = new FavMovieAdapter(this, list);
+        favTvAdapter = new FavTvAdapter(this, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(favMovieAdapter);
-        favMovieAdapter.setLismovies(list);
+        recyclerView.setAdapter(favTvAdapter);
+        favTvAdapter.setListTvs(list);
         recyclerView.setHasFixedSize(true);
     }
 
@@ -65,7 +68,7 @@ public class MovieFavFragment extends Fragment {
         @Override
         protected Cursor doInBackground(Void... voids) {
             return getContext().getContentResolver().query(
-                    CONTENT_URI,
+                    CONTENT_URI_TV,
                     null,
                     null,
                     null,
@@ -78,8 +81,8 @@ public class MovieFavFragment extends Fragment {
             super.onPostExecute(cursor);
 
             list = cursor;
-            favMovieAdapter.setLismovies(list);
-            favMovieAdapter.notifyDataSetChanged();
+            favTvAdapter.setListTvs(list);
+            favTvAdapter.notifyDataSetChanged();
         }
     }
 
@@ -87,4 +90,5 @@ public class MovieFavFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
     }
+
 }

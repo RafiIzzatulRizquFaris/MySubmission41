@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.example.mysubmission41.FavoriteActivity;
+import com.example.mysubmission41.favorite.FavoriteActivity;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.adapter.TabFragmentAdapter;
 import com.google.android.material.navigation.NavigationView;

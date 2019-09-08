@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
-import static com.example.mysubmission41.DatabaseContract.AUTHORITY;
-import static com.example.mysubmission41.DatabaseContract.CONTENT_URI;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.TABEL_MOVIE;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TABEL_TV;
+import static com.example.mysubmission41.favorite.DatabaseContract.AUTHORITY;
+import static com.example.mysubmission41.favorite.DatabaseContract.CONTENT_URI;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.TABEL_MOVIE;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TABEL_TV;
 
 public class FavoriteProvider extends ContentProvider {
     private static final int MOVIE = 1;

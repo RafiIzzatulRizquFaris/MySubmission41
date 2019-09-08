@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.database.Cursor;
 import android.net.Uri;

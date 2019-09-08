@@ -9,21 +9,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.JUDUL;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.MOVIE_ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.POSTER;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.RELEASE;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.VOTE;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_ID;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_JUDUL;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_POSTER;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_RELEASE;
-import static com.example.mysubmission41.DatabaseContract.TvShowColumns.TV_VOTE;
-import static com.example.mysubmission41.DatabaseContract.getColumnDouble;
-import static com.example.mysubmission41.DatabaseContract.getColumnInt;
-import static com.example.mysubmission41.DatabaseContract.getColumnString;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_JUDUL;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_OVERVIEW;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_POSTER;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_RELEASE;
+import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns.TV_VOTE;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnDouble;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnInt;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnString;
 
 public class TvShow implements Parcelable {
     @SerializedName("first_air_date")

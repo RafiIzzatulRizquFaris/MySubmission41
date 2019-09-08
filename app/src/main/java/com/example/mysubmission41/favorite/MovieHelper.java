@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import static android.provider.BaseColumns._ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.MOVIE_ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.TABEL_MOVIE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.MOVIE_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.TABEL_MOVIE;
 
 public class MovieHelper {
     private static String DATABASE_TABLE = TABEL_MOVIE;

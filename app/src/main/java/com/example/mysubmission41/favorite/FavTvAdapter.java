@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.favorite;
 
 import android.database.Cursor;
 import android.util.Log;
@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.pojo.TvShow;
 
 public class FavTvAdapter extends RecyclerView.Adapter<FavTvAdapter.ViewHolder> {

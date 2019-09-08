@@ -2,11 +2,14 @@ package com.example.mysubmission41.activity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,21 +17,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.mysubmission41.ApiConfig;
-import com.example.mysubmission41.MovieHelper;
+import com.example.mysubmission41.DetailMovieContract;
+import com.example.mysubmission41.DetailMoviePresenter;
+import com.example.mysubmission41.favorite.MovieHelper;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.pojo.Movie;
+import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static com.example.mysubmission41.DatabaseContract.CONTENT_URI;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.JUDUL;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.MOVIE_ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.POSTER;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.RELEASE;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.VOTE;
+import static com.example.mysubmission41.favorite.DatabaseContract.CONTENT_URI;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.JUDUL;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.MOVIE_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.OVERVIEW;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.POSTER;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.RELEASE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.VOTE;
 
-public class DetailMovieActivity extends AppCompatActivity{
+public class DetailMovieActivity extends AppCompatActivity implements DetailMovieContract.View {
 
     public static final String EXTRA_MOVIE = "extra_movie";
     Movie movie;
@@ -37,8 +43,11 @@ public class DetailMovieActivity extends AppCompatActivity{
     TextView movieOverview, movieVote, movieDate, moviePop;
     FloatingActionButton btnBackDrop;
     Button btnFavoriteMovie;
+    ProgressBar pgDetail;
     private Boolean isFavorite = false;
     private MovieHelper mMovieHelper;
+    private final String TAG = "Details: ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,32 +59,24 @@ public class DetailMovieActivity extends AppCompatActivity{
         collapsingMovie = findViewById(R.id.collapsing_movie);
         collapsingMovie.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingMovie.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
-        collapsingMovie.setTitle(movie.getTitle());
 
         posterMovie = findViewById(R.id.movie_poster);
-        String posterPath = movie.getPosterPath();
-        String posterFix = ApiConfig.IMAGE_URL+posterPath;
-        Glide.with(this).load(posterFix).into(posterMovie);
 
         movieVote = findViewById(R.id.movie_vote);
-        movieVote.setText(String.valueOf(movie.getVoteAverage()));
 
         moviePop = findViewById(R.id.movie_pop);
-        moviePop.setText(String.valueOf(movie.getPopularity()));
 
         movieDate = findViewById(R.id.movie_date);
-        movieDate.setText(movie.getReleaseDate());
 
         movieOverview = findViewById(R.id.movie_overview);
-        movieOverview.setText(movie.getOverview());
 
-        String backDropPath = movie.getBackdropPath();
-        String backDPFix = ApiConfig.IMAGE_URL+backDropPath;
+        pgDetail = findViewById(R.id.pg_detail);
+
         btnBackDrop = findViewById(R.id.btn_backDrop);
-        btnBackDrop.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(backDPFix));
-            startActivity(intent);
-        });
+
+
+        DetailMoviePresenter detailPresenter = new DetailMoviePresenter(this);
+        detailPresenter.requestMovieData(movie.getId());
 
         btnFavoriteMovie = findViewById(R.id.btn_movie_fav);
         btnFavoriteMovie.setOnClickListener(view -> {
@@ -90,6 +91,92 @@ public class DetailMovieActivity extends AppCompatActivity{
     private void setFavorite() {
         if (isFavorite) btnFavoriteMovie.setText(R.string.favorited);
         else btnFavoriteMovie.setText(R.string.favourite);
+    }
+
+
+    @Override
+    public void showProgress() {
+        pgDetail.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        pgDetail.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setDataToView(MovieDetailItem movieDetailItem) {
+        loadDataSQL();
+
+        int size = 0;
+        String genres = "";
+        size = movieDetailItem.getGenres().size();
+        for (int i = 0; i < size; i++) {
+            genres += movieDetailItem.getGenres().get(i).getName() + (i + 1 < size ? ", " : "");
+        }
+
+        collapsingMovie.setTitle(movie.getTitle());
+
+        String posterPath = movie.getPosterPath();
+        String posterFix = ApiConfig.IMAGE_URL+posterPath;
+        Glide.with(this).load(posterFix).into(posterMovie);
+
+        movieVote.setText(String.valueOf(movie.getVoteAverage()));
+        moviePop.setText(String.valueOf(movie.getPopularity()));
+        movieDate.setText(movie.getReleaseDate());
+        movieOverview.setText(movie.getOverview());
+
+        String backDropPath = movie.getBackdropPath();
+        String backDPFix = ApiConfig.IMAGE_URL+backDropPath;
+        btnBackDrop.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(backDPFix));
+            startActivity(intent);
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Movie Helper: " + mMovieHelper);
+        if (mMovieHelper != null) {
+            mMovieHelper.close();
+        }
+    }
+
+
+    private void loadDataSQL() {
+        mMovieHelper = new MovieHelper(this);
+        mMovieHelper.open();
+
+        Cursor cursor2 = getContentResolver().query(
+                Uri.parse(CONTENT_URI + "/"),
+                null,
+                null,
+                null,
+                null
+        );
+
+        while (cursor2.moveToNext()) {
+            Log.e("hellow", cursor2.getString(2));
+        }
+
+        Cursor cursor = getContentResolver().query(
+                Uri.parse(CONTENT_URI + "/" + movie.getId()),
+                null,
+                null,
+                null,
+                null
+        );
+
+        Log.d(TAG, "Cursor: " + cursor);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) isFavorite = true;
+
+            cursor.close();
+        }
+        setFavorite();
     }
 
 
@@ -124,4 +211,8 @@ public class DetailMovieActivity extends AppCompatActivity{
         Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onResponseFailure(Throwable throwable) {
+        Log.d("DETAIL MOVIE ACTIVITY :", String.valueOf(throwable));
+    }
 }

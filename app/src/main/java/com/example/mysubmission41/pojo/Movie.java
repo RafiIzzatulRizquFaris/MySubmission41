@@ -9,15 +9,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.JUDUL;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.MOVIE_ID;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.OVERVIEW;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.POSTER;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.RELEASE;
-import static com.example.mysubmission41.DatabaseContract.MovieColumns.VOTE;
-import static com.example.mysubmission41.DatabaseContract.getColumnDouble;
-import static com.example.mysubmission41.DatabaseContract.getColumnInt;
-import static com.example.mysubmission41.DatabaseContract.getColumnString;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.JUDUL;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.MOVIE_ID;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.OVERVIEW;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.POSTER;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.RELEASE;
+import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.VOTE;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnDouble;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnInt;
+import static com.example.mysubmission41.favorite.DatabaseContract.getColumnString;
 
 public class Movie implements Parcelable {
     @SerializedName("vote_count")
@@ -62,6 +62,10 @@ public class Movie implements Parcelable {
     @SerializedName("release_date")
     
     private String releaseDate;
+
+    public Movie(String title) {
+        this.title = title;
+    }
 
     public Integer getVoteCount() {
         return voteCount;
