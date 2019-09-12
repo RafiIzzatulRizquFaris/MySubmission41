@@ -10,7 +10,7 @@ public class ApiConfig {
     private static Retrofit retrofit = null;
 
 
-    static Retrofit getClient() {
+    public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(URL)

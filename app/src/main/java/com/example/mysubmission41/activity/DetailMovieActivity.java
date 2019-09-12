@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.mysubmission41.ApiConfig;
-import com.example.mysubmission41.DetailMovieContract;
-import com.example.mysubmission41.DetailMoviePresenter;
+import com.example.mysubmission41.contract.DetailMovieContract;
+import com.example.mysubmission41.presenter.DetailMoviePresenter;
 import com.example.mysubmission41.favorite.MovieHelper;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.pojo.Movie;
@@ -158,7 +158,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
         );
 
         while (cursor2.moveToNext()) {
-            Log.e("hellow", cursor2.getString(2));
+            Log.e("Movie", cursor2.getString(2));
         }
 
         Cursor cursor = getContentResolver().query(
