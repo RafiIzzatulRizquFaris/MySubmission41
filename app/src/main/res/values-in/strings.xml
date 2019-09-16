@@ -42,4 +42,8 @@
     <string name="overview">Ikhtisar</string>
     <string name="get_back_drop">Dapatkan Back-Drop</string>
     <string name="date">29/12/2000</string>
+    <string name="favourite">Favorit</string>
+    <string name="favorited">Terfavoritkan</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="release_reminder">Pengingat Perilisan</string>
 </resources>

@@ -43,4 +43,6 @@
     <string name="date">29/12/2000</string>
     <string name="favourite">Favorite</string>
     <string name="favorited">Favorited</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="release_reminder">Release Reminder</string>
 </resources>
