@@ -2,6 +2,8 @@ package com.example.mysubmission41;
 
 import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.example.mysubmission41.pojo.TvDetailItem;
+import com.example.mysubmission41.response.MovieListResponse;
+import com.example.mysubmission41.response.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,7 +13,7 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @GET("discover/movie")
-    Call<MovieDetailItem> getMovieDiscover(@Query("api_key") String apiKey, @Query("page") int PageNo);
+    Call<MovieListResponse> getMovieDiscover(@Query("api_key") String apiKey, @Query("page") int PageNo);
 
 //    @GET("discover/tv")
 //    Call<TvListResponse> getTvDiscover(@Query("api_key") String apiKey, @Query("page") int PageNo);

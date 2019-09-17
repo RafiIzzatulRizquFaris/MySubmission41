@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.mysubmission41.pojo.MovieDetailItem;
+import com.example.mysubmission41.response.MovieListResponse;
 import com.example.mysubmission41.response.MovieResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,15 +26,15 @@ public class ReleaseReminder extends BroadcastReceiver {
 
     private void getMovies(Context context) {
         final ApiInterface apiInterface = ApiConfig.getClient().create(ApiInterface.class);
-        Call<MovieDetailItem> call = apiInterface.getMovieDiscover(API_KEY, pageNo);
-        call.enqueue(new Callback<MovieDetailItem>() {
+        Call<MovieListResponse> call = apiInterface.getMovieDiscover(API_KEY, pageNo);
+        call.enqueue(new Callback<MovieListResponse>() {
             @Override
-            public void onResponse(Call<MovieDetailItem> call, Response<MovieDetailItem> response) {
+            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
 
             }
 
             @Override
-            public void onFailure(Call<MovieDetailItem> call, Throwable t) {
+            public void onFailure(Call<MovieListResponse> call, Throwable t) {
 
             }
         });
