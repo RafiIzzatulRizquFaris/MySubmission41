@@ -70,7 +70,7 @@ public class ReleaseReminder extends BroadcastReceiver {
 
             @Override
             public void onFailure(Call<MovieListResponse> call, Throwable t) {
-
+                Log.e(TAG, "Error : ", t);
             }
         });
     }
