@@ -1,10 +1,21 @@
 package com.example.mysubmission41;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
+
+import com.example.mysubmission41.activity.MainActivity;
 import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.example.mysubmission41.response.MovieListResponse;
 
@@ -52,7 +63,7 @@ public class ReleaseReminder extends BroadcastReceiver {
                 Log.d(TAG, "TIME: " + releaseDate);
 
                 if (releaseDate.equals(getTime)) {
-                    notifRelease(context, title, message, id);
+                    notificationRelease(context, title, message, id);
                 }
 
             }
@@ -64,6 +75,35 @@ public class ReleaseReminder extends BroadcastReceiver {
         });
     }
 
-    private void notifRelease(Context context, String title, String message, int id) {
+    private void notificationRelease(Context context, String title, String message, int id) {
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = TaskStackBuilder.create(context)
+                .addNextIntent(intent)
+                .getPendingIntent(NOTIFICATION_ID, PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri defaultNotification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setVibrate(new long[] {1000, 1000, 1000, 1000})
+                .setSound(defaultNotification);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            mBuilder.setChannelId(CHANNEL_ID);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+
+        Notification notification = mBuilder.build();
+        mBuilder.setAutoCancel(true);
+
+        if (notificationManager != null) {
+            notificationManager.notify(id, notification);
+        }
     }
 }
