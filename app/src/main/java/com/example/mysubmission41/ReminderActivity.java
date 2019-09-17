@@ -9,6 +9,14 @@ import java.util.Objects;
 
 public class ReminderActivity extends AppCompatActivity {
 
+    private String DAILY_REMINDER = "daily";
+    private String RELEASE_REMINDER = "release";
+    private String KEY_DAILY_REMINDER = "dailyreminder";
+    private String KEY_RELEASE_REMINDER = "releasereminder";
+
+    String timeDaily = "07:00";
+    String timeRelease = "08:00";
+
     Switch aSwitchDaily, aSwitchRelease;
 
     private void setActionBarTitle(){

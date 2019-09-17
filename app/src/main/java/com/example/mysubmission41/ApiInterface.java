@@ -10,9 +10,9 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-//    @GET("discover/movie")
-//    Call<MovieListResponse> getMovieDsicover(@Query("api_key") String apiKey, @Query("page") int PageNo);
-//
+    @GET("discover/movie")
+    Call<MovieDetailItem> getMovieDiscover(@Query("api_key") String apiKey, @Query("page") int PageNo);
+
 //    @GET("discover/tv")
 //    Call<TvListResponse> getTvDiscover(@Query("api_key") String apiKey, @Query("page") int PageNo);
 
