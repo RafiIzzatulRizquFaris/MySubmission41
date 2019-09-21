@@ -48,4 +48,5 @@
     <string name="release_reminder">Pengingat Perilisan</string>
     <string name="set_reminder">Setel Pengingat</string>
     <string name="message_release_today">Telah Dirilis Hari ini</string>
+    <string name="message_daily_remainder">Ayo Kita Lihat</string>
 </resources>

@@ -47,4 +47,5 @@
     <string name="release_reminder">Release Reminder</string>
     <string name="set_reminder">Set Reminder</string>
     <string name="message_release_today">Has been Released Today</string>
+    <string name="message_daily_remainder">Let\'s Watch it</string>
 </resources>
