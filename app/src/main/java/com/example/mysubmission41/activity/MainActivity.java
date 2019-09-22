@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.mysubmission41.ReminderActivity;
 import com.example.mysubmission41.favorite.FavoriteActivity;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.adapter.TabFragmentAdapter;
@@ -109,7 +110,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -120,8 +120,9 @@ public class MainActivity extends AppCompatActivity
             Intent LIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(LIntent);
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_notification) {
+            Intent Nintent = new Intent(MainActivity.this, ReminderActivity.class);
+            startActivity(Nintent);
         }
         else if (id == R.id.nav_about){
             Intent AIntent = new Intent(MainActivity.this, AboutActivity.class);
