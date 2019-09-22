@@ -1,5 +1,6 @@
 package com.example.mysubmission41;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -20,6 +21,7 @@ import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.example.mysubmission41.response.MovieListResponse;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -105,5 +107,28 @@ public class ReleaseReminder extends BroadcastReceiver {
         if (notificationManager != null) {
             notificationManager.notify(id, notification);
         }
+    }
+
+    public void cancelNotificationRelease(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, ReleaseReminder.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, NOTIFICATION_ID, intent, 0);
+        (alarmManager).cancel(pendingIntent);
+    }
+
+    public void setAlarmRelease(Context context, String type, String time, String message) {
+        cancelNotificationRelease(context);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, ReleaseReminder.class);
+        intent.putExtra("message", message);
+        intent.putExtra("type", type);
+        String timeArray[] = time.split(":");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]));
+        calendar.set(Calendar.SECOND, 0);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, NOTIFICATION_ID, intent, 0);
+        (alarmManager).setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 }
