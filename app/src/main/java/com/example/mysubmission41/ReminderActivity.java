@@ -2,6 +2,7 @@ package com.example.mysubmission41;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Switch;
 
@@ -13,6 +14,14 @@ public class ReminderActivity extends AppCompatActivity {
     private String RELEASE_REMINDER = "release";
     private String KEY_DAILY_REMINDER = "dailyreminder";
     private String KEY_RELEASE_REMINDER = "releasereminder";
+
+    public DailyReminder dailyReminder;
+    public ReleaseReminder releaseReminder;
+    public SharedPreferences dailyPref,releasePref;
+    public SharedPreferences.Editor dailyEdt, releaseEdt;
+    public Preference preference;
+
+    private final String TAG = "Notification: ";
 
     String timeDaily = "07:00";
     String timeRelease = "08:00";
@@ -32,5 +41,9 @@ public class ReminderActivity extends AppCompatActivity {
         aSwitchDaily = findViewById(R.id.sw_daily_reminder);
         aSwitchRelease = findViewById(R.id.sw_release_reminder);
 
+        dailyReminder = new DailyReminder();
+        releaseReminder = new ReleaseReminder();
+        preference = new Preference(this);
+        setPreference();
     }
 }
