@@ -30,11 +30,11 @@
                 android:title="@string/favourite"/>
             <item
                 android:id="@+id/nav_search_movie"
-                android:icon=""
+                android:icon="@drawable/ic_local_movies_black_24dp"
                 android:title="@string/search_movie"/>
             <item
                 android:id="@+id/nav_search_tv"
-                android:icon=""
+                android:icon="@drawable/ic_tv_black_24dp"
                 android:title="@string/search_tv_show"/>
         </menu>
     </item>
