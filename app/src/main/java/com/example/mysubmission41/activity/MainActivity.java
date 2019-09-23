@@ -19,7 +19,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.mysubmission41.MovieSearchActivity;
 import com.example.mysubmission41.ReminderActivity;
+import com.example.mysubmission41.TvSearchActivity;
 import com.example.mysubmission41.favorite.FavoriteActivity;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.adapter.TabFragmentAdapter;
@@ -116,7 +118,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_tools) {
-
             Intent LIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(LIntent);
 
@@ -131,6 +132,14 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_fav){
             Intent FIntent = new Intent(MainActivity.this, FavoriteActivity.class);
             startActivity(FIntent);
+        }
+        else if (id == R.id.nav_search_movie){
+            Intent SMIntent = new Intent(MainActivity.this, MovieSearchActivity.class);
+            startActivity(SMIntent);
+        }
+        else if (id == R.id.nav_search_tv){
+            Intent STIntent = new Intent(MainActivity.this, TvSearchActivity.class);
+            startActivity(STIntent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
