@@ -28,6 +28,14 @@
                 android:id="@+id/nav_fav"
                 android:icon="@drawable/ic_favorite_black_24dp"
                 android:title="@string/favourite"/>
+            <item
+                android:id="@+id/nav_search_movie"
+                android:icon=""
+                android:title="@string/search_movie"/>
+            <item
+                android:id="@+id/nav_search_tv"
+                android:icon=""
+                android:title="@string/search_tv_show"/>
         </menu>
     </item>
 

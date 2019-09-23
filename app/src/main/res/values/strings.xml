@@ -48,4 +48,6 @@
     <string name="set_reminder">Set Reminder</string>
     <string name="message_release_today">Has been Released Today</string>
     <string name="message_daily_remainder">Let\'s Watch it</string>
+    <string name="search_movie">Search Movie</string>
+    <string name="search_tv_show">Search Tv Show</string>
 </resources>
