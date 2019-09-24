@@ -2,12 +2,15 @@ package com.example.mysubmission41;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import static com.example.mysubmission41.MSearchActivity.EXTRA_QUERY;
 
 public class MovieSearchActivity extends AppCompatActivity {
 
@@ -28,6 +31,9 @@ public class MovieSearchActivity extends AppCompatActivity {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
+                    Intent intent = new Intent(MovieSearchActivity.this, MSearchActivity.class);
+                    intent.putExtra(EXTRA_QUERY, query);
+                    startActivity(intent);
                     Toast.makeText(MovieSearchActivity.this, query, Toast.LENGTH_SHORT).show();
                     return true;
                 }
