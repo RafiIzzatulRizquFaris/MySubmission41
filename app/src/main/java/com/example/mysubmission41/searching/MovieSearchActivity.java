@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.searching;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -9,7 +9,9 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.mysubmission41.MSearchActivity.EXTRA_QUERY_MOVIE;
+import com.example.mysubmission41.R;
+
+import static com.example.mysubmission41.searching.MSearchActivity.EXTRA_QUERY_MOVIE;
 
 public class MovieSearchActivity extends AppCompatActivity {
 

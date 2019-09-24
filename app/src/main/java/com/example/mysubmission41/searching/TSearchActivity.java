@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.searching;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.ApiInterface;
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.adapter.TvShowAdapter;
 import com.example.mysubmission41.pojo.SearchTvModel;
 import com.example.mysubmission41.pojo.TvShow;

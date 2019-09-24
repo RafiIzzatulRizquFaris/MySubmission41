@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.searching;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.ApiInterface;
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.adapter.MovieAdapter;
 import com.example.mysubmission41.pojo.Movie;
 import com.example.mysubmission41.pojo.SearchMovieModel;

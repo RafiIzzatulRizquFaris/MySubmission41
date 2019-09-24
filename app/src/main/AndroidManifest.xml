@@ -18,10 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TSearchActivity"></activity>
-        <activity android:name=".MSearchActivity" />
-        <activity android:name=".TvSearchActivity" />
-        <activity android:name=".MovieSearchActivity" />
+        <activity android:name=".searching.TSearchActivity"></activity>
+        <activity android:name=".searching.MSearchActivity" />
+        <activity android:name=".searching.TvSearchActivity" />
+        <activity android:name=".searching.MovieSearchActivity" />
         <activity android:name=".notification.ReminderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
