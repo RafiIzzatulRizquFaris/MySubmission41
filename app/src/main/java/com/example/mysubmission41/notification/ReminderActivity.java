@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.notification;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mysubmission41.R;
 
 import java.util.Objects;
 

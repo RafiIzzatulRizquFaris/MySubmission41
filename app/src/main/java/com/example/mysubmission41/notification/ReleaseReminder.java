@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.notification;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -16,6 +16,9 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.mysubmission41.ApiConfig;
+import com.example.mysubmission41.ApiInterface;
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.activity.MainActivity;
 import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.example.mysubmission41.response.MovieListResponse;

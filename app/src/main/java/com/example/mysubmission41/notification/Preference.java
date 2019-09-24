@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.notification;
 
 import android.content.Context;
 import android.content.SharedPreferences;

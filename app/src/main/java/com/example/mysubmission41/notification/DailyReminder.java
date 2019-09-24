@@ -1,4 +1,4 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.notification;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -15,6 +15,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.mysubmission41.R;
 import com.example.mysubmission41.activity.MainActivity;
 
 import java.util.Calendar;

@@ -22,7 +22,7 @@
         <activity android:name=".MSearchActivity" />
         <activity android:name=".TvSearchActivity" />
         <activity android:name=".MovieSearchActivity" />
-        <activity android:name=".ReminderActivity">
+        <activity android:name=".notification.ReminderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />

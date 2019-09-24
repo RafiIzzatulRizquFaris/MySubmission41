@@ -20,7 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.mysubmission41.MovieSearchActivity;
-import com.example.mysubmission41.ReminderActivity;
+import com.example.mysubmission41.notification.ReminderActivity;
 import com.example.mysubmission41.TvSearchActivity;
 import com.example.mysubmission41.favorite.FavoriteActivity;
 import com.example.mysubmission41.R;
