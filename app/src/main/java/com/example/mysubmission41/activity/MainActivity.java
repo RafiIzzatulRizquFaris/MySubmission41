@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_tools) {
             Intent LIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(LIntent);
-
-        } else if (id == R.id.nav_notification) {
+        }
+        else if (id == R.id.nav_notification) {
             Intent Nintent = new Intent(MainActivity.this, ReminderActivity.class);
             startActivity(Nintent);
         }
