@@ -24,10 +24,10 @@ public interface ApiInterface {
     @GET("tv/{tv_id}")
     Call<TvDetailItem> getTVDetails(@Path("tv_id") int tvId, @Query("api_key") String apiKey);
 
-//    @GET("search/movie")
-//    Call<SearchMovieModel> getSearchMovie(@Query("api_key") String apiKey, @Query("query") String query);
-//
-//    @GET("search/tv")
-//    Call<SearchTvModel> getSearchTv(@Query("api_key") String apiKey, @Query("query") String query);
+    @GET("search/movie")
+    Call<SearchMovieModel> getSearchMovie(@Query("api_key") String apiKey, @Query("query") String query);
+
+    @GET("search/tv")
+    Call<SearchTvModel> getSearchTv(@Query("api_key") String apiKey, @Query("query") String query);
 }
 
