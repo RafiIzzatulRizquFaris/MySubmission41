@@ -38,7 +38,7 @@ public class TvSearchActivity extends AppCompatActivity {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    Intent intent = new Intent(TvSearchActivity.this, MSearchActivity.class);
+                    Intent intent = new Intent(TvSearchActivity.this, TSearchActivity.class);
                     intent.putExtra(EXTRA_QUERY_TV, query);
                     startActivity(intent);
                     return false;
