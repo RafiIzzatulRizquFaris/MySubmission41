@@ -22,7 +22,7 @@ import static com.example.mysubmission41.ApiConfig.API_KEY;
 
 public class MSearchActivity extends AppCompatActivity {
 
-    public static final String EXTRA_QUERY = "search_movie";
+    public static final String EXTRA_QUERY_MOVIE = "search_movie";
     private static final String TAG = "MSearchActivity";
 
     RecyclerView recyclerView;
@@ -33,7 +33,7 @@ public class MSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msearch);
-        String query = getIntent().getStringExtra(EXTRA_QUERY);
+        String query = getIntent().getStringExtra(EXTRA_QUERY_MOVIE);
         Log.d(TAG, "search: " + query);
         setActionBarTitle(query);
         recyclerView = findViewById(R.id.rv_search_movie);

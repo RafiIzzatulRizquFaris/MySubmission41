@@ -9,7 +9,7 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.mysubmission41.MSearchActivity.EXTRA_QUERY;
+import static com.example.mysubmission41.MSearchActivity.EXTRA_QUERY_MOVIE;
 
 public class MovieSearchActivity extends AppCompatActivity {
 
@@ -31,7 +31,7 @@ public class MovieSearchActivity extends AppCompatActivity {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Intent intent = new Intent(MovieSearchActivity.this, MSearchActivity.class);
-                    intent.putExtra(EXTRA_QUERY, query);
+                    intent.putExtra(EXTRA_QUERY_MOVIE, query);
                     startActivity(intent);
                     return false;
                 }
