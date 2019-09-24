@@ -11,14 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysubmission41.R;
 
+import java.util.Objects;
+
 import static com.example.mysubmission41.searching.MSearchActivity.EXTRA_QUERY_MOVIE;
 
 public class MovieSearchActivity extends AppCompatActivity {
+
+    private void setActionBarTitle(){
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Search Movie");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_search);
+        setActionBarTitle();
     }
 
     @Override

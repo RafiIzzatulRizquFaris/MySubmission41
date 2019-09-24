@@ -11,14 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysubmission41.R;
 
+import java.util.Objects;
+
 import static com.example.mysubmission41.searching.TSearchActivity.EXTRA_QUERY_TV;
 
 public class TvSearchActivity extends AppCompatActivity {
+
+    private void setActionBarTitle(){
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Search Tv Show");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_search);
+        setActionBarTitle();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
