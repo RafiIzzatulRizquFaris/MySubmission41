@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,8 +33,7 @@ public class MovieSearchActivity extends AppCompatActivity {
                     Intent intent = new Intent(MovieSearchActivity.this, MSearchActivity.class);
                     intent.putExtra(EXTRA_QUERY, query);
                     startActivity(intent);
-                    Toast.makeText(MovieSearchActivity.this, query, Toast.LENGTH_SHORT).show();
-                    return true;
+                    return false;
                 }
 
                 @Override
