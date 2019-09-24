@@ -36,9 +36,7 @@ public class MSearchActivity extends AppCompatActivity {
         String query = getIntent().getStringExtra(EXTRA_QUERY);
         Log.d(TAG, "search: " + query);
         setActionBarTitle(query);
-
         recyclerView = findViewById(R.id.rv_search_movie);
-
         setup();
         loadUp(query);
     }
