@@ -1,9 +1,10 @@
 package com.example.mysubmission41;
 
 import com.example.mysubmission41.pojo.MovieDetailItem;
+import com.example.mysubmission41.pojo.SearchMovieModel;
+import com.example.mysubmission41.pojo.SearchTvModel;
 import com.example.mysubmission41.pojo.TvDetailItem;
 import com.example.mysubmission41.response.MovieListResponse;
-import com.example.mysubmission41.response.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

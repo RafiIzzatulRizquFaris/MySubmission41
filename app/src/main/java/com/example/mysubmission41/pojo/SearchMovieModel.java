@@ -1,11 +1,10 @@
-package com.example.mysubmission41;
+package com.example.mysubmission41.pojo;
 
-import com.example.mysubmission41.pojo.Movie;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class SearchMovieModel {
+public class SearchMovieModel {
     @SerializedName("page")
     private int page;
 

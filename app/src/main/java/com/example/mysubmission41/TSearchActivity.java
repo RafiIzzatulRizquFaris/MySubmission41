@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysubmission41.adapter.TvShowAdapter;
+import com.example.mysubmission41.pojo.SearchTvModel;
 import com.example.mysubmission41.pojo.TvShow;
 
 import java.util.ArrayList;

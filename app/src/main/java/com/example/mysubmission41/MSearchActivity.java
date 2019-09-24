@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.mysubmission41.adapter.MovieAdapter;
 import com.example.mysubmission41.pojo.Movie;
+import com.example.mysubmission41.pojo.SearchMovieModel;
 
 import java.util.ArrayList;
 import java.util.Objects;
