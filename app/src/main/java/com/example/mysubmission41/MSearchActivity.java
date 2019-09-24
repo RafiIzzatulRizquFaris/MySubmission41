@@ -55,15 +55,10 @@ public class MSearchActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SearchMovieModel> call, Throwable t) {
-                loadFailed(t);
+                Log.e(TAG, "Error in :", t);
+                Toast.makeText(MSearchActivity.this, "Load Failed", Toast.LENGTH_LONG).show();
             }
         });
-
-    }
-
-    private void loadFailed(Throwable t) {
-        Log.e(TAG, "Error in :", t);
-        Toast.makeText(this, "Load Failed", Toast.LENGTH_LONG).show();
     }
 
     private void setup() {
