@@ -1,4 +1,4 @@
-package com.example.favoriteapp;
+package com.example.favoriteapp.adapter;
 
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.favoriteapp.Movie;
+import com.example.favoriteapp.R;
 import com.example.favoriteapp.fragment.MovieFragment;
 
 public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder> {
