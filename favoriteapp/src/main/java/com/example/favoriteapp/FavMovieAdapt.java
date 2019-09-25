@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder> {
 
     private Cursor cursor;
@@ -33,6 +35,10 @@ public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Movie movie = getItem(position);
+        String imgUrl = "https://image.tmdb.org/t/p/w500/"+ movie.getPosterPath();
+        Glide.with(movieFragment).load(imgUrl).override(150, 175).into(holder.imageView);
+        holder.textView.setText(movie.getTitle());
+        holder.textView2.setText(movie.getReleaseDate());
     }
 
     private Movie getItem(int position) {
@@ -58,10 +64,10 @@ public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder
         return cursor.getCount();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textView, textView2;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.img_item_movie);
             textView = itemView.findViewById(R.id.tv_item_name_movie);
