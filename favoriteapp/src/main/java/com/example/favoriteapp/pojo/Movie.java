@@ -1,4 +1,4 @@
-package com.example.favoriteapp;
+package com.example.favoriteapp.pojo;
 
 import android.database.Cursor;
 import android.os.Parcel;

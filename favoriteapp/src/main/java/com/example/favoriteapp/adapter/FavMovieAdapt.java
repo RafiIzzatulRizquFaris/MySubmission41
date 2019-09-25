@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.favoriteapp.Movie;
+import com.example.favoriteapp.pojo.Movie;
 import com.example.favoriteapp.R;
 import com.example.favoriteapp.fragment.MovieFragment;
 
