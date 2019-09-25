@@ -2,6 +2,8 @@ package com.example.mysubmission41.searching;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +33,7 @@ public class TSearchActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TvShowAdapter tvShowAdapter;
+    ProgressBar pgbar;
     ArrayList<TvShow> tvShowArrayList = new ArrayList<>();
 
     @Override
@@ -41,6 +44,8 @@ public class TSearchActivity extends AppCompatActivity {
         Log.d(TAG, "search: " + query);
         setActionBarTitle(query);
         recyclerView = findViewById(R.id.rv_search_tv);
+        pgbar = findViewById(R.id.pg_tv_search);
+        pgbar.setVisibility(View.VISIBLE);
         setup();
         loadUp(query);
     }
@@ -53,12 +58,14 @@ public class TSearchActivity extends AppCompatActivity {
             public void onResponse(Call<SearchTvModel> call, Response<SearchTvModel> response) {
                 tvShowArrayList.addAll(response.body().getTvShow());
                 tvShowAdapter.notifyDataSetChanged();
+                pgbar.setVisibility(View.GONE);
+                Toast.makeText(TSearchActivity.this, query+" Loaded", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<SearchTvModel> call, Throwable t) {
                 Log.e(TAG, "Error in :", t);
-                Toast.makeText(TSearchActivity.this, "Load Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(TSearchActivity.this, "Load Failed, Check your connection", Toast.LENGTH_LONG).show();
             }
         });
     }
