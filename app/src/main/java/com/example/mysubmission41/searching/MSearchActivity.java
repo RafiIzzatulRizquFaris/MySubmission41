@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,9 @@ import android.widget.Toast;
 import com.example.mysubmission41.ApiConfig;
 import com.example.mysubmission41.ApiInterface;
 import com.example.mysubmission41.R;
+import com.example.mysubmission41.activity.DetailMovieActivity;
 import com.example.mysubmission41.adapter.MovieAdapter;
+import com.example.mysubmission41.click.ItemClickSupport;
 import com.example.mysubmission41.pojo.Movie;
 import com.example.mysubmission41.pojo.SearchMovieModel;
 
@@ -25,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.mysubmission41.ApiConfig.API_KEY;
+import static com.example.mysubmission41.activity.DetailMovieActivity.EXTRA_MOVIE;
 
 public class MSearchActivity extends AppCompatActivity {
 
@@ -48,6 +52,11 @@ public class MSearchActivity extends AppCompatActivity {
         pgbar.setVisibility(View.VISIBLE);
         setup();
         loadUp(query);
+        ItemClickSupport.addTo(recyclerView).setOnItemClickListener((recyclerView, position, v) -> {
+            Intent intent = new Intent(this, DetailMovieActivity.class);
+            intent.putExtra(EXTRA_MOVIE, movieArrayList.get(position));
+            startActivity(intent);
+        });
     }
 
     private void loadUp(String query) {
