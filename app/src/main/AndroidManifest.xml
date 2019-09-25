@@ -18,10 +18,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".searching.TSearchActivity"></activity>
-        <activity android:name=".searching.MSearchActivity" />
-        <activity android:name=".searching.TvSearchActivity" />
-        <activity android:name=".searching.MovieSearchActivity" />
+        <activity android:name=".searching.TSearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".searching.TvSearchActivity" />
+        </activity>
+        <activity android:name=".searching.MSearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".searching.MovieSearchActivity" />
+        </activity>
+        <activity android:name=".searching.TvSearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity android:name=".searching.MovieSearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity android:name=".notification.ReminderActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
