@@ -1,5 +1,6 @@
 package com.example.mysubmission41.searching;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mysubmission41.ApiConfig;
 import com.example.mysubmission41.ApiInterface;
 import com.example.mysubmission41.R;
+import com.example.mysubmission41.activity.DetailMovieActivity;
 import com.example.mysubmission41.adapter.TvShowAdapter;
+import com.example.mysubmission41.click.ItemClickSupport;
 import com.example.mysubmission41.pojo.SearchTvModel;
 import com.example.mysubmission41.pojo.TvShow;
 
@@ -25,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.mysubmission41.ApiConfig.API_KEY;
+import static com.example.mysubmission41.activity.DetailShowActivity.EXTRA_SHOW;
 
 public class TSearchActivity extends AppCompatActivity {
 
@@ -48,6 +52,11 @@ public class TSearchActivity extends AppCompatActivity {
         pgbar.setVisibility(View.VISIBLE);
         setup();
         loadUp(query);
+        ItemClickSupport.addTo(recyclerView).setOnItemClickListener((recyclerView, position, v) -> {
+            Intent intent = new Intent(this, DetailMovieActivity.class);
+            intent.putExtra(EXTRA_SHOW, tvShowArrayList.get(position));
+            startActivity(intent);
+        });
     }
 
     private void loadUp(String query) {
