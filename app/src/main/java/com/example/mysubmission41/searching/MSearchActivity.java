@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mysubmission41.ApiConfig;
@@ -31,6 +33,7 @@ public class MSearchActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
+    ProgressBar pgbar;
     ArrayList<Movie> movieArrayList = new ArrayList<>();
 
     @Override
@@ -41,6 +44,8 @@ public class MSearchActivity extends AppCompatActivity {
         Log.d(TAG, "search: " + query);
         setActionBarTitle(query);
         recyclerView = findViewById(R.id.rv_search_movie);
+        pgbar = findViewById(R.id.pg_movie_search);
+        pgbar.setVisibility(View.VISIBLE);
         setup();
         loadUp(query);
     }
@@ -53,12 +58,14 @@ public class MSearchActivity extends AppCompatActivity {
             public void onResponse(Call<SearchMovieModel> call, Response<SearchMovieModel> response) {
                 movieArrayList.addAll(response.body().getMovie());
                 movieAdapter.notifyDataSetChanged();
+                pgbar.setVisibility(View.GONE);
+                Toast.makeText(MSearchActivity.this, query+ " Loaded", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<SearchMovieModel> call, Throwable t) {
                 Log.e(TAG, "Error in :", t);
-                Toast.makeText(MSearchActivity.this, "Load Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(MSearchActivity.this, "Load Failed, Check your connection", Toast.LENGTH_LONG).show();
             }
         });
     }
