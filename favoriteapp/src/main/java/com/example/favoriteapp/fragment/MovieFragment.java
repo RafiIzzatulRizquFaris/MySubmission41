@@ -1,19 +1,22 @@
 package com.example.favoriteapp.fragment;
 
 
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.favoriteapp.R;
+import com.example.favoriteapp.adapter.FavMovieAdapt;
+
+import static com.example.favoriteapp.DatabaseContract.CONTENT_URI;
 
 
 /**
@@ -21,8 +24,10 @@ import com.example.favoriteapp.R;
  */
 public class MovieFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private FavMovieAdapt favMovieAdapt;
+    private Cursor list;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -36,20 +41,47 @@ public class MovieFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_movie_favapp);
         swipeRefreshLayout = view.findViewById(R.id.srl_movie_favapp);
 
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         new loadData().execute();
+        showListData();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new loadData().execute();
+                showListData();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        return view;
+    }
+
+    private void showListData() {
+        favMovieAdapt = new FavMovieAdapt(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(favMovieAdapt);
+        favMovieAdapt.setListMovie(list);
+        recyclerView.setHasFixedSize(true);
+    }
+
+    private class loadData extends AsyncTask<Void, Void, Cursor> {
+        @Override
+        protected Cursor doInBackground(Void... voids) {
+            return getContext().getContentResolver().query(
+                    CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+        }
+
+        @Override
+        protected void onPostExecute(Cursor cursor) {
+            super.onPostExecute(cursor);
+            list = cursor;
+            favMovieAdapt.setListMovie(list);
+            favMovieAdapt.notifyDataSetChanged();
+        }
     }
 }
