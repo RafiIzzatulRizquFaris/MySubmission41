@@ -6,10 +6,15 @@
     tools:context=".fragment.MovieFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_movie_favapp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movie_favapp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_movie_favapp"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>
