@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder> {
 
-    Cursor cursor;
+    private Cursor cursor;
     private MovieFragment movieFragment;
 
-    public setListMovie(Cursor cursor) {
+    public void setListMovie(Cursor cursor) {
         this.cursor = cursor;
     }
 
@@ -32,12 +32,30 @@ public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final Movie movie = getItem(position);
+    }
 
+    private Movie getItem(int position) {
+        if (!cursor.moveToPosition(position)) {
+            throw new IllegalStateException("Position invalid");
+        }
+        return new Movie(cursor);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (cursor == null) return 0;
+        return cursor.getCount();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
