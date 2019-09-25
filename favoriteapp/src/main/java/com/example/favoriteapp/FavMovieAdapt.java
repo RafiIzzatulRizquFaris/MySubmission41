@@ -1,5 +1,6 @@
 package com.example.favoriteapp;
 
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FavMovieAdapt extends RecyclerView.Adapter<FavMovieAdapt.ViewHolder> {
+
+    Cursor cursor;
+    private MovieFragment movieFragment;
+
+    public setListMovie(Cursor cursor) {
+        this.cursor = cursor;
+    }
+
+    public FavMovieAdapt(MovieFragment movieFragment) {
+        this.movieFragment = movieFragment;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
