@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.favoriteapp.fragment.MovieFragment;
+import com.example.favoriteapp.fragment.TvFragment;
+
 public class TabFragmentAdapter extends FragmentPagerAdapter {
 
     private int[] title = new int[]{R.string.title_movies, R.string.title_tv_show};
