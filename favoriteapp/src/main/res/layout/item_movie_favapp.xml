@@ -35,7 +35,7 @@
             card_view:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/img_item_photo_movie"
+                android:id="@+id/img_item_movie"
                 android:layout_width="120dp"
                 android:layout_height="140dp"
                 android:contentDescription="@string/movie_poster"
@@ -81,7 +81,7 @@
                 android:src="@drawable/ic_date_range_black_24dp" />
 
             <TextView
-                android:id="@+id/movie_final_date"
+                android:id="@+id/movie_final_date_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
