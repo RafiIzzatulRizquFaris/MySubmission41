@@ -17,8 +17,8 @@ import com.example.favoriteapp.pojo.TvShow;
 
 public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
-    Cursor cursor;
-    TvFragment tvFragment;
+    private Cursor cursor;
+    private TvFragment tvFragment;
 
     public void setListTv(Cursor cursor) {
         this.cursor = cursor;
