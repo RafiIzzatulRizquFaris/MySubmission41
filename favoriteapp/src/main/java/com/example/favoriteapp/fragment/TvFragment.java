@@ -17,6 +17,7 @@ import com.example.favoriteapp.R;
 import com.example.favoriteapp.adapter.FavTvAdapt;
 
 import static com.example.favoriteapp.DatabaseContract.CONTENT_URI;
+import static com.example.favoriteapp.DatabaseContract.CONTENT_URI_TV;
 
 
 /**
@@ -66,7 +67,7 @@ public class TvFragment extends Fragment {
         @Override
         protected Cursor doInBackground(Void... voids) {
             return getContext().getContentResolver().query(
-                    CONTENT_URI,
+                    CONTENT_URI_TV,
                     null,
                     null,
                     null,
