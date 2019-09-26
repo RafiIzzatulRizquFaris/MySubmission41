@@ -1,15 +1,18 @@
 package com.example.favoriteapp.fragment;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.favoriteapp.R;
+import com.example.favoriteapp.adapter.FavTvAdapt;
 
 
 /**
@@ -17,6 +20,10 @@ import com.example.favoriteapp.R;
  */
 public class TvFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private FavTvAdapt favTvAdapt;
+    private Cursor list;
 
     public TvFragment() {
         // Required empty public constructor
