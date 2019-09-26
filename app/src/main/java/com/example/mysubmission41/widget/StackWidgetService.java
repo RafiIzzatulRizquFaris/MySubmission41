@@ -1,15 +1,11 @@
 package com.example.mysubmission41.widget;
 
-import android.app.Service;
 import android.content.Intent;
-import android.os.IBinder;
+import android.widget.RemoteViewsService;
 
-import androidx.annotation.Nullable;
-
-public class StackWidgetService extends Service {
-    @Nullable
+public class StackWidgetService extends RemoteViewsService {
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    public RemoteViewsFactory onGetViewFactory(Intent intent) {
+        return new StackRemoteView(this.getApplicationContext(), intent);
     }
 }
