@@ -28,7 +28,7 @@ public class TabFragmentAdapter extends FragmentPagerAdapter {
         switch(position){
             case 0:
                 return new MovieFragment();
-            case 1 :
+            case 1:
                 return new TvFragment();
         }
         return fragment;
