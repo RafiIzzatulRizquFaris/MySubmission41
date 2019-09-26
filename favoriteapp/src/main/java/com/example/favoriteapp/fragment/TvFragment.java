@@ -56,7 +56,7 @@ public class TvFragment extends Fragment {
 
     private void showListData() {
         favTvAdapt = new FavTvAdapt(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(favTvAdapt);
         favTvAdapt.setListTv(list);
         recyclerView.setHasFixedSize(true);
@@ -65,7 +65,12 @@ public class TvFragment extends Fragment {
     private class loadData extends AsyncTask<Void, Void, Cursor> {
         @Override
         protected Cursor doInBackground(Void... voids) {
-            return getContext().getContentResolver().query(CONTENT_URI, null, null, null, null);
+            return getContext().getContentResolver().query(
+                    CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    null);
         }
 
         @Override

@@ -63,9 +63,7 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        if (cursor == null){
-            return 0;
-        }
+        if (cursor == null) return 0;
         return cursor.getCount();
     }
 
