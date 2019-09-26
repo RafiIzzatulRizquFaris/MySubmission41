@@ -6,10 +6,14 @@
     tools:context=".fragment.TvFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_tv_favapp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tv_favapp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_tv_favapp"/>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>
