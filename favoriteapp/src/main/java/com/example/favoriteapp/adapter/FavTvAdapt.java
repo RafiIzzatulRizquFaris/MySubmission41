@@ -40,8 +40,8 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
         final TvShow tvShow = getItem(position);
         String imgUrl = "https://image.tmdb.org/t/p/w500/"+ tvShow.getPosterPath();
         Glide.with(tvFragment).load(imgUrl).override(150, 175).into(holder.imageView);
-        holder.textView.setText(tvShow.getName());
-        holder.textView2.setText(tvShow.getFirstAirDate());
+        holder.textViewtv.setText(tvShow.getName());
+        holder.textViewtv2.setText(tvShow.getFirstAirDate());
     }
 
     private TvShow getItem(int position) {
@@ -71,12 +71,12 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
-        TextView textView, textView2;
+        TextView textViewtv, textViewtv2;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.img_item_photo_show);
-            textView = itemView.findViewById(R.id.tv_item_name_show);
-            textView2 = itemView.findViewById(R.id.show_final_date);
+            textViewtv = itemView.findViewById(R.id.tv_item_name_show);
+            textViewtv2 = itemView.findViewById(R.id.show_final_date);
         }
     }
 }
