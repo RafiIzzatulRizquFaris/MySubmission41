@@ -144,7 +144,7 @@ public class FavoriteProvider extends ContentProvider {
 
             case FAVORITE_TV_ID:
                 updated = tvHelper.updateProvider(uri.getLastPathSegment(), values);
-
+                break;
             default:
                 updated = 0;
                 break;
