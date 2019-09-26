@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.favoriteapp.R;
 import com.example.favoriteapp.fragment.TvFragment;
+import com.example.favoriteapp.pojo.TvShow;
 
 public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
@@ -33,12 +34,30 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final TvShow tvShow = getItem(position);
 
+    }
+
+    private TvShow getItem(int position) {
+        if (!cursor.moveToPosition(position)){
+            throw new IllegalStateException("Position Invalid");
+        }
+        return new TvShow(cursor);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        if (cursor === null){
+        if (cursor == null){
             return 0;
         }
         return cursor.getCount();
