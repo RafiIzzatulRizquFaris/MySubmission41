@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,8 +66,13 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView imageView;
+        TextView textView, textView2;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageView = itemView.findViewById(R.id.img_item_photo_show);
+            textView = itemView.findViewById(R.id.tv_item_name_show);
+            textView2 = itemView.findViewById(R.id.show_final_date);
         }
     }
 }
