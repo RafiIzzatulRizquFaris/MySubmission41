@@ -16,7 +16,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.favoriteapp.R;
 import com.example.favoriteapp.adapter.FavTvAdapt;
 
-import static com.example.favoriteapp.DatabaseContract.CONTENT_URI;
 import static com.example.favoriteapp.DatabaseContract.CONTENT_URI_TV;
 
 
