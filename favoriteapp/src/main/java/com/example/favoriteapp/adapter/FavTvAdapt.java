@@ -1,12 +1,14 @@
 package com.example.favoriteapp.adapter;
 
 import android.database.Cursor;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.favoriteapp.R;
 import com.example.favoriteapp.fragment.TvFragment;
 
 public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
@@ -25,7 +27,8 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tv_favapp, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -35,11 +38,14 @@ public class FavTvAdapt extends RecyclerView.Adapter<FavTvAdapt.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (cursor === null){
+            return 0;
+        }
+        return cursor.getCount();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public ViewHolder(@NonNull View itemView) {
+    class ViewHolder extends RecyclerView.ViewHolder{
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }
