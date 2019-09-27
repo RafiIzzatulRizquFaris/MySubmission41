@@ -19,6 +19,7 @@ import com.example.mysubmission41.pojo.Movie;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.mysubmission41.favorite.DatabaseContract.CONTENT_URI;
+import static com.example.mysubmission41.widget.FavoriteWidget.EXTRA_ITEM;
 
 public class StackRemoteView implements RemoteViewsService.RemoteViewsFactory {
 
