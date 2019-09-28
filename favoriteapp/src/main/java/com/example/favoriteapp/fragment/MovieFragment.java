@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.favoriteapp.DetailActivity;
 import com.example.favoriteapp.ItemClickSupport;
 import com.example.favoriteapp.R;
 import com.example.favoriteapp.adapter.FavMovieAdapt;
 
 import static com.example.favoriteapp.DatabaseContract.CONTENT_URI;
+import static com.example.favoriteapp.DetailActivity.EXTRA_MOVIE;
 
 
 /**
