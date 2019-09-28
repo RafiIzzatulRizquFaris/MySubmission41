@@ -1,6 +1,7 @@
 package com.example.favoriteapp.fragment;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.favoriteapp.ItemClickSupport;
 import com.example.favoriteapp.R;
 import com.example.favoriteapp.adapter.FavMovieAdapt;
 
@@ -82,6 +84,14 @@ public class MovieFragment extends Fragment {
             list = cursor;
             favMovieAdapt.setListMovie(list);
             favMovieAdapt.notifyDataSetChanged();
+            ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                @Override
+                public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    intent.putExtra(EXTRA_MOVIE, list.getInt(position));
+                    startActivity(intent);
+                }
+            });
         }
     }
 }
