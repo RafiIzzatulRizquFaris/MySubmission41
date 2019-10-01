@@ -20,6 +20,7 @@ public class FavoriteWidget extends AppWidgetProvider {
         Intent i = new Intent(context, StackWidgetService.class);
         i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         i.setData(Uri.parse(i.toUri(Intent.URI_INTENT_SCHEME)));
+
         RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.favorite_widget);
         rv.setRemoteAdapter(R.id.stack_view, i);
         rv.setEmptyView(R.id.stack_view, R.id.empty_view);
@@ -30,6 +31,7 @@ public class FavoriteWidget extends AppWidgetProvider {
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, ti, PendingIntent.FLAG_UPDATE_CURRENT);
         rv.setPendingIntentTemplate(R.id.stack_view, pi);
         appWidgetManager.updateAppWidget(appWidgetId, rv);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId,R.id.stack_view);
     }
 
     @Override
@@ -37,6 +39,7 @@ public class FavoriteWidget extends AppWidgetProvider {
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId,R.id.stack_view);
         }
     }
 
