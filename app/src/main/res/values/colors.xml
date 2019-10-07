@@ -6,6 +6,5 @@
     <color name="colorWhite">#ffff</color>
     <color name="colorBlue">#5b92e5</color>
     <color name="colorBlack">#000</color>
-    <color name="forRating">#e8edee</color>
     <color name="forOverView">#e2ead1</color>
 </resources>
