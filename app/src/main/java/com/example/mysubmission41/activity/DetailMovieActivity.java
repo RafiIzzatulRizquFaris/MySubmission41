@@ -37,7 +37,7 @@ import static com.example.mysubmission41.favorite.DatabaseContract.MovieColumns.
 public class DetailMovieActivity extends AppCompatActivity implements DetailMovieContract.View {
 
     public static final String EXTRA_MOVIE = "extra_movie";
-    Movie movie;
+    private Movie movie;
     ImageView posterMovie;
     CollapsingToolbarLayout collapsingMovie;
     TextView movieOverview, movieVote, movieDate, moviePop;

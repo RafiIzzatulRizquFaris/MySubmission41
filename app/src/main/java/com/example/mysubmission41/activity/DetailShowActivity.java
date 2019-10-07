@@ -37,7 +37,7 @@ import static com.example.mysubmission41.favorite.DatabaseContract.TvShowColumns
 public class DetailShowActivity extends AppCompatActivity implements DetailTvContract.View {
 
     public static final String EXTRA_SHOW = "extra_show";
-    TvShow tvShow;
+    private TvShow tvShow;
     ImageView postershow;
     CollapsingToolbarLayout collapsingshow;
     TextView showOverview, showVote, showDate, showPop;

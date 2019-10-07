@@ -16,12 +16,21 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.mysubmission41.ApiConfig;
 import com.example.mysubmission41.ApiInterface;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.activity.MainActivity;
+import com.example.mysubmission41.pojo.Movie;
 import com.example.mysubmission41.pojo.MovieDetailItem;
 import com.example.mysubmission41.response.MovieListResponse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,6 +47,7 @@ import static com.example.mysubmission41.ApiConfig.API_KEY;
 public class ReleaseReminder extends BroadcastReceiver {
 
     public static final int pageNo = 1;
+    private static final int ID_RELEASE = 100000;
     private final String TAG = "Release Reminder: ";
     public static final int NOTIFICATION_ID = 11;
     public static String CHANNEL_ID = "channel_02";
@@ -46,38 +56,99 @@ public class ReleaseReminder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        getMovies(context);
+        getMoviesRelease(context);
     }
 
-    private void getMovies(Context context) {
-        final ApiInterface apiInterface = ApiConfig.getClient().create(ApiInterface.class);
-        Call<MovieListResponse> call = apiInterface.getMovieDiscover(API_KEY, pageNo);
-        call.enqueue(new Callback<MovieListResponse>() {
-            @Override
-            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
-                List<MovieDetailItem> movieItems = response.body().getResults();
+    private void getMoviesRelease(Context context) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String date = dateFormat.format(Calendar.getInstance().getTime());
+        String url = Constants.getUrl(
+                Constants.URL_TYPE_NEW_RELEASE,
+                Constants.URL_MOVIES,
+                date,
+                context
+        );
+        getMovies(context, url);
+//        final ApiInterface apiInterface = ApiConfig.getClient().create(ApiInterface.class);
+//        Call<MovieListResponse> call = apiInterface.getMovieDiscover(API_KEY, pageNo);
+//        call.enqueue(new Callback<MovieListResponse>() {
+//            @Override
+//            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
+//                List<MovieDetailItem> movieItems = response.body().getResults();
+//
+//                String title = movieItems.get(0).getTitle();
+//                String getMessage = context.getResources().getString(R.string.message_release_today);
+//                String message = title + " " + getMessage;
+//                String releaseDate = movieItems.get(0).getReleaseDate();
+//                int id  = movieItems.get(0).getId();
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+//                Date date = new Date();
+//                final String getTime = dateFormat.format(date);
+//                Log.d(TAG, "TIME: " + releaseDate);
+//
+//                if (releaseDate.equals(getTime)) {
+//                    notificationRelease(context, title, message, id);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<MovieListResponse> call, Throwable t) {
+//                Log.e(TAG, "Error : ", t);
+//            }
+//        });
+    }
 
-                String title = movieItems.get(0).getTitle();
-                String getMessage = context.getResources().getString(R.string.message_release_today);
-                String message = title + " " + getMessage;
-                String releaseDate = movieItems.get(0).getReleaseDate();
-                int id  = movieItems.get(0).getId();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                Date date = new Date();
-                final String getTime = dateFormat.format(date);
-                Log.d(TAG, "TIME: " + releaseDate);
+    private void getMovies(Context context, String url) {
+        AndroidNetworking.get(url)
+                .setTag("movies")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray results =  response.getJSONArray("results");
+                            int totalItem = results.length();
+                            if(totalItem == 0)
+                                notificationRelease(
+                                        context,
+                                        context.getResources().getString(R.string.message_release_today),
+                                        context.getResources().getString(R.string.message_release_today),
+                                        ID_RELEASE
+                                );
+                            else
+                                for(int i=0; i< totalItem;i++) {
+                                    JSONObject movieObject = results.getJSONObject(i);
+                                    final Movie moviesItem = new Movie(movieObject);
+                                    String message = String.format(
+                                            context.getResources().getString(R.string.notification_format_message),
+                                            moviesItem.getTitle()
+                                    );
+                                    notificationRelease(
+                                            context,
+                                            moviesItem.getTitle(),
+                                            message,
+                                            moviesItem.getId()
+                                    );
+                                }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                if (releaseDate.equals(getTime)) {
-                    notificationRelease(context, title, message, id);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<MovieListResponse> call, Throwable t) {
-                Log.e(TAG, "Error : ", t);
-            }
-        });
+                    @Override
+                    public void onError(ANError anError) {
+                        String title = context.getResources().getString(R.string.message_release_today);
+                        String message = context.getResources().getString(R.string.message_release_today);
+                        notificationRelease(
+                                context,
+                                title,
+                                message,
+                                ID_RELEASE
+                        );
+                    }
+                });
     }
 
     private void notificationRelease(Context context, String title, String message, int id) {

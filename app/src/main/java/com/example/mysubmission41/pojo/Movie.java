@@ -4,7 +4,12 @@ import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -210,6 +215,19 @@ public class Movie implements Parcelable {
         this.voteAverage = getColumnDouble(cursor, VOTE);
         this.posterPath = getColumnString(cursor, POSTER);
         this.releaseDate = getColumnString(cursor, RELEASE);
+    }
+    public Movie(@NonNull JSONObject movieObject){
+        try {
+            this.id = movieObject.getInt("id");
+            this.title = movieObject.getString("title");
+            this.overview = movieObject.getString("overview");
+            this.releaseDate = movieObject.getString("release_date");
+            this.voteAverage = movieObject.getDouble("vote_average");
+            this.posterPath = movieObject.getString("poster_path");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     protected Movie(Parcel in) {

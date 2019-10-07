@@ -52,4 +52,5 @@
     <string name="search_movie">Cari Film</string>
     <string name="search_tv_show">Cari Tayangan</string>
     <string name="empty">Kosong</string>
+    <string name="notification_format_message">%s telah rilis hari ini\n</string>
 </resources>
