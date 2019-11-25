@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -20,13 +19,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.mysubmission41.ApiConfig;
-import com.example.mysubmission41.ApiInterface;
 import com.example.mysubmission41.R;
 import com.example.mysubmission41.activity.MainActivity;
 import com.example.mysubmission41.pojo.Movie;
-import com.example.mysubmission41.pojo.MovieDetailItem;
-import com.example.mysubmission41.response.MovieListResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,15 +29,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static com.example.mysubmission41.ApiConfig.API_KEY;
 
 public class ReleaseReminder extends BroadcastReceiver {
 
