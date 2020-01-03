@@ -37,6 +37,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }
